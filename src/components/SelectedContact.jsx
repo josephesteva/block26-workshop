@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react"
 
+const dummyContact = {
+	name: `Bill`, phone: `2`, email: `2`, company: {name: `hi`, catchPhrase: `hi`}, website: `hi@hi.com`
+}
 const SelectedContact = ({ selectedContactId, setSelectedContactId }) => {
-	const [contact, setContact] = useState(null);
+	const [contact, setContact] = useState(dummyContact);
 
 	useEffect(() => {
 		const fetchSelectedContact = async () => {
@@ -19,9 +22,8 @@ const SelectedContact = ({ selectedContactId, setSelectedContactId }) => {
 
 	return (
 		<>
-		{console.log(contact)}
-		{/* <p>{contact.name}</p> */}
-			{/* <table>
+		{/* {console.log(contact)} */}
+			<table>
 				<thead>
 					<tr>
 						<th colSpan="2">{contact.name}</th>
@@ -38,15 +40,16 @@ const SelectedContact = ({ selectedContactId, setSelectedContactId }) => {
 					</tr>
 					<tr>
 						<td>Company: </td>
-						<td>{contact.company}</td>
+						<td>{contact.company.name}</td>
 					</tr>
 					<tr>
 						<td>Website: </td>
 						<td>{contact.website}</td>
 					</tr>
 				</tbody>
-			</table> */}
-
+			</table>
+		<button onClick={ () => {
+			setSelectedContactId(null)}}>Back to Contact List</button>
 		</>
 	)
 }
